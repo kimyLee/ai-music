@@ -1,0 +1,50 @@
+@import './reset';
+@import './variable';
+
+#app {
+  height: 100vmin;
+  width: 100vmax;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  box-sizing: border-box;
+  font-size: 14px;
+  color: white;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  background-color: #fff;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: background-image 1s;
+}
+
+.main {
+  margin: 2% auto 0;
+}
+
+.set-bg {
+  position: absolute;
+  top: 6%;
+  right: 4%;
+}
+
+.fade-drop-enter-active,
+.fade-drop-leave-active {
+  transition: opacity 0.25s ease-out;
+}
+
+.fade-drop-enter,
+.fade-drop-leave-to {
+  opacity: 0;
+}
+
+@media screen and (orientation: portrait) {
+  #app {
+    transform: translate(-50%, -50%) rotate(90deg);
+  }
+}

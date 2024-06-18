@@ -1,0 +1,38 @@
+@import '@/style/variable.scss';
+
+@font-face {
+  font-family: 'pixel';
+  src: url('./pixel.ttf');
+}
+// --------------- 布局 --------------
+// 通用首行
+.menu-box {
+  display: flex;
+}
+
+// --------------- 元素 --------------
+// 通用按键
+// $btnWidth: 92px;
+.m-btn {
+  width: $btnWidth;
+  height: $btnWidth;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #444;
+}
+// AI 按键
+.btn-ai {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+// 扬声器
+.btn-micro {
+  width: $btnWidth * 2;
+  height: $btnWidth;
+  border: 1px solid #444;
+  background-image: url(/micro.png);
+  background-position: center;
+  background-repeat: no-repeat;
+}

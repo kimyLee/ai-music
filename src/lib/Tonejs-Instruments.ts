@@ -83,7 +83,7 @@ const NotesMap: any = {
 const SampleLibrary = {
   minify: false,
   ext: '.[mp3|ogg]', // use setExt to change the extensions on all files // do not change this variable //
-  baseUrl: '/media/',
+  baseUrl: '/ai-music/dist/media/',
   list: [
     'bass-electric',
     'bassoon',

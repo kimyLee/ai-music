@@ -7,7 +7,7 @@
         <!-- screen field -->
         <Screen :current="currentStep" :rightnumber="rightNumber" :status="status" />
         <!-- 功能键 -->
-        <div class="m-btn" @click="handleCancel">Auto</div>
+        <div class="m-btn" @click="handleCancel">Cancel</div>
         <!-- 扬声器位置示意 -->
         <div class="btn-micro"></div>
       </div>

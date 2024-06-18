@@ -72,6 +72,9 @@ export default defineComponent({
     handleClick(data: any) {
       console.log('click')
     },
+    handleCancel() {
+      console.log('click')
+    },
     handleFinishAI() {
       this.toPlayingAI = false
       this.$emit('changeStatus', 'Normal')

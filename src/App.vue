@@ -7,7 +7,7 @@
         <!-- screen field -->
         <Screen :current="currentStep" :rightnumber="rightNumber" :status="status" />
         <!-- 功能键 -->
-        <div class="m-btn">Auto</div>
+        <div class="m-btn" @click="handleCancel">Auto</div>
         <!-- 扬声器位置示意 -->
         <div class="btn-micro"></div>
       </div>
@@ -60,6 +60,9 @@ export default defineComponent({
     // this.greeting // 类型：string
   },
   methods: {
+    handleCancel() {
+      ;(this.$refs as any).keyboard.handleFinishAI()
+    },
     changeStep(step: number) {
       this.currentStep = step
     },

@@ -37,6 +37,7 @@ export default defineComponent({
     return {
       // synth: null as any,
       currentStep: 0,
+      currentMusic: 1,
       toPlayingAI: false,
       list: createKeyboard(conf),
       musicArr: [
@@ -46,6 +47,12 @@ export default defineComponent({
           ['5', '1+', '2+', '3+', '2+', '1+', '2+', '3+', '3+'],
           ['5', '1+', '2+', '3+', '2+', '1+', '1+'],
           ['5', '1+', '2+', '3+', '2+', '1+', '2+', '5+', '3+']
+        ],
+        [
+          ['5', '5', '3', '4', '5', '6', '5', '4', '3', '2'],
+          ['3', '3', '1', '2', '3', '4', '3', '2', '1', '7-'],
+          ['6-', '6-', '1', '6', '5', '5', '1'],
+          ['2', '3', '4', '3', '2', '1', '3', '3', '2']
         ]
       ],
       inputArr: [] as string[]
@@ -69,11 +76,19 @@ export default defineComponent({
       this.toPlayingAI = false
       this.$emit('changeStatus', 'Normal')
       this.inputArr = []
+      this.currentStep = 0
+      this.$emit('changeRightNum', 0)
+      this.$emit('changeStep', 0)
+      if (this.currentMusic == 0) {
+        this.currentMusic = 1
+      } else {
+        this.currentMusic = 0
+      }
     },
     handlePlayAI(index = 0) {
       this.toPlayingAI = false
       this.$emit('changeStatus', 'AI Playing')
-      const arr = this.musicArr[index]
+      const arr = this.musicArr[this.currentMusic]
       if (this.currentStep < 4) {
         const subArr = arr[this.currentStep]
         const arrTarget = this.numberToNote(subArr)
@@ -119,7 +134,7 @@ export default defineComponent({
     },
     // 检查当前播放是否正确
     handleCheckReplay(note: string) {
-      const arr = this.musicArr[0]
+      const arr = this.musicArr[this.currentMusic]
       const subArr = arr[this.currentStep]
       const arrTarget = this.numberToNote(subArr)
       // 检查最后一位是否正确

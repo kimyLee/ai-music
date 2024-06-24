@@ -196,7 +196,8 @@ export default defineComponent({
           C8: 'C8.mp3'
         },
         release: 1,
-        baseUrl: 'https://tonejs.github.io/audio/salamander/',
+        baseUrl: '/ai-music/dist/salamander/',
+        // baseUrl: '/ai-music/dist/audio/salamander/',
         onload: () => {
           Tone.loaded().then(() => {
             // 开始循环
@@ -358,6 +359,7 @@ export default defineComponent({
   align-items: center;
 }
 .main-box {
+  position: relative;
   border: 2px solid #ccc;
   border-radius: 10px;
   max-width: 677px;

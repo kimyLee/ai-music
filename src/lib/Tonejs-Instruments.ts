@@ -12,9 +12,12 @@ import * as Tone from 'tone'
     // hack AudioContext 自动初始化问题
     // https://developers.google.com/web/updates/2017/09/autoplay-policy-changes#webaudio
     Tone.start()
+    console.log('audio is ready 123')
   },
   false
 )
+
+//
 
 const NotesMap: any = {
   C2: 'a49.mp3',

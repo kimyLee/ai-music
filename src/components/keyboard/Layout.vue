@@ -66,9 +66,19 @@ export default defineComponent({
       SampleLibrary.load({
         instruments: 'piano'
       }) as any
-    ).toMaster()
+    ).toDestination()
   },
   methods: {
+    // 所有灯都熄灭
+    setAllLightOff() {
+      for (let i = 0; i < this.list.length; i++) {
+        this.list[i].isActive = false
+      }
+    },
+    // 指定id灯亮灭
+    setIndexLightToggle(index: number, bool: boolean) {
+      this.list[index].isActive = bool
+    },
     handleClick(data: any) {
       console.log('click')
     },
@@ -340,11 +350,11 @@ $noteHeight: 94px;
   bottom: -5px;
   filter: blur(10px);
   opacity: 0;
-  transition: opacity 2s;
+  // transition: opacity 2s;
   z-index: -1;
 }
 .li-item.active::before {
   opacity: 1;
-  transition: opacity 0.5s;
+  // transition: opacity 0.5s;
 }
 </style>

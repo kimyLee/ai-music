@@ -13,8 +13,11 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@tonejs/midi": "^2.0.28",
+    "midi-parser-js": "^4.0.4",
+    "midi-player-js": "^2.0.16",
     "pinia": "^2.1.7",
-    "tone": "^15.0.4",
+    "tone": "^15.1.2",
     "vant": "^4.9.1",
     "vue": "^3.4.21",
     "vue-router": "^4.3.0"

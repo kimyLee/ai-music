@@ -396,7 +396,7 @@ export default defineComponent({
     height: 100%;
     max-width: 677px;
     max-height: 400px;
-    transform: scale(0.9) translateY(-25px);
+    transform: scale(0.9) translateY(25px);
   }
 }
 </style>

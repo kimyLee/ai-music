@@ -70,6 +70,7 @@ export default defineComponent({
       countDivideBeatFactor: 3,
       delayTime: 1200, // 假定值
       // loop
+      lastUpdateTime: 0,
       currentBeat: 0,
       count: 0,
       loopCurrentIndex: 0,
@@ -174,7 +175,11 @@ export default defineComponent({
       // }, 20) // 修正
 
       this.loopCurrentIndex = 0
-      this.handleLoop()
+
+      this.timer = setInterval(() => {
+        this.handleLoop()
+      }, this.loopTime)
+      // this.handleLoop()
     },
     handleScore(index: number) {
       const currentTime = Date.now()
@@ -277,28 +282,16 @@ export default defineComponent({
               this.setTrack1Index(index)
               if (index === 1) {
                 this.isActive1Time = Date.now()
-                // this.isActive1 = true
-                // this.timer1 = setTimeout(() => {
-                //   this.isActive1 = false
-                // }, 100)
               }
             } else if (trackIndex === 1) {
               this.setTrack2Index(index)
               if (index === 1) {
                 this.isActive2Time = Date.now()
-                // this.isActive2 = true
-                // this.timer2 = setTimeout(() => {
-                //   this.isActive2 = false
-                // }, 100)
               }
             } else {
               this.setTrack3Index(index)
               if (index === 1) {
                 this.isActive3Time = Date.now()
-                // this.isActive3 = true
-                // this.timer3 = setTimeout(() => {
-                //   this.isActive3 = false
-                // }, 100)
               }
             }
           }
@@ -312,16 +305,17 @@ export default defineComponent({
       }
 
       this.count++
+
       if (currentBeat > 227) {
         this.closeLoop()
       } else {
-        this.timer = setTimeout(() => {
-          this.handleLoop()
-        }, this.loopTime)
+        // this.timer = setTimeout(() => {
+        //   this.handleLoop()
+        // }, this.loopTime - offset)
       }
     },
     closeLoop() {
-      clearTimeout(this.timer)
+      clearInterval(this.timer)
       this.musicPlayer.pause()
       // location.reload()
     },
@@ -405,7 +399,7 @@ export default defineComponent({
     height: 100%;
     max-width: 677px;
     max-height: 400px;
-    transform: scale(0.9) translateY(-25px);
+    transform: scale(0.9) translateY(20px);
   }
 }
 </style>

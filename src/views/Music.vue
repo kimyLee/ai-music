@@ -100,7 +100,7 @@ export default defineComponent({
       // const track2 = ['F#4', 'D#5', 'C5', 'F5']
       // const track3 = ['G5', 'C4', 'D5', 'D#4', 'A#4']
 
-      midi = await Midi.fromUrl('/ai-music/dist/7.mid')
+      midi = await Midi.fromUrl('/ai-music/dist/1.mid')
       midi.tracks.forEach((track: any, index: number) => {
         console.log(midi.tracks.length, track.notes.length, ' track.notes', index)
         track.notes.forEach((note: any) => {

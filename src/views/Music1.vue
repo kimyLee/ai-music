@@ -1,5 +1,5 @@
 <template>
-  <div class="main1">
+  <div class="main">
     <div class="main-box">
       <!-- 第一排功能按键 -->
       <div class="menu-box">
@@ -349,7 +349,7 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-.main1 {
+.main {
   position: relative;
   padding: 10px;
   box-sizing: border-box;

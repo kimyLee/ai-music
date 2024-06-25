@@ -71,6 +71,7 @@ export default defineComponent({
       delayTime: 1200, // 假定值
       // loop
       lastUpdateTime: 0,
+      startTime: 0,
       currentBeat: 0,
       count: 0,
       loopCurrentIndex: 0,
@@ -176,10 +177,11 @@ export default defineComponent({
 
       this.loopCurrentIndex = 0
 
-      this.timer = setInterval(() => {
-        this.handleLoop()
-      }, this.loopTime)
-      // this.handleLoop()
+      // this.timer = setInterval(() => {
+      //   this.handleLoop()
+      // }, this.loopTime)
+      this.startTime = Date.now()
+      this.handleLoop()
     },
     handleScore(index: number) {
       const currentTime = Date.now()
@@ -305,13 +307,15 @@ export default defineComponent({
       }
 
       this.count++
+      const expect = this.startTime + this.count * this.loopTime
+      const offset = Date.now() - expect
 
       if (currentBeat > 227) {
         this.closeLoop()
       } else {
-        // this.timer = setTimeout(() => {
-        //   this.handleLoop()
-        // }, this.loopTime - offset)
+        this.timer = setTimeout(() => {
+          this.handleLoop()
+        }, this.loopTime - offset)
       }
     },
     closeLoop() {
@@ -399,7 +403,7 @@ export default defineComponent({
     height: 100%;
     max-width: 677px;
     max-height: 400px;
-    transform: scale(0.9) translateY(20px);
+    transform: scale(0.9) translateY(10px);
   }
 }
 </style>

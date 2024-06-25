@@ -356,45 +356,44 @@ export default defineComponent({
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.main-box {
+  position: relative;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  max-width: 677px;
+  max-height: 400px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.test-block-box {
+  position: absolute;
+  bottom: 15px;
+  left: 105px;
+  z-index: 100;
 
-  .main-box {
-    position: relative;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    max-width: 677px;
-    max-height: 400px;
-    padding: 10px;
-    box-sizing: border-box;
-  }
-  .test-block-box {
-    position: absolute;
-    bottom: 15px;
-    left: 105px;
-    z-index: 100;
-
-    display: flex;
-    // width: 400px;
-    // margin-top: 100px;
-    flex-direction: column;
-    justify-content: space-around;
-    opacity: 0.8;
-    .block {
-      width: 85px;
-      height: 86px;
-      border: 3px solid green;
-      background-color: #fff;
-      &.active {
-        background-color: yellow;
-      }
-      &.perfect {
-        background-color: green;
-      }
-      &.well {
-        background-color: yellow;
-      }
-      &.wrong {
-        background-color: red;
-      }
+  display: flex;
+  // width: 400px;
+  // margin-top: 100px;
+  flex-direction: column;
+  justify-content: space-around;
+  opacity: 0.8;
+  .block {
+    width: 85px;
+    height: 86px;
+    border: 3px solid green;
+    background-color: #fff;
+    &.active {
+      background-color: yellow;
+    }
+    &.perfect {
+      background-color: green;
+    }
+    &.well {
+      background-color: yellow;
+    }
+    &.wrong {
+      background-color: red;
     }
   }
 }

@@ -168,9 +168,10 @@ export default defineComponent({
       ;(this.$refs as any).keyboard.setIndexLightToggle(indexMap[index], true)
     },
     async handleStart() {
-      setTimeout(() => {
-        this.musicPlayer.play()
-      }, 100) // 修正
+      this.musicPlayer.play()
+      // setTimeout(() => {
+      //   this.musicPlayer.play()
+      // }, 20) // 修正
 
       this.loopCurrentIndex = 0
       this.handleLoop()

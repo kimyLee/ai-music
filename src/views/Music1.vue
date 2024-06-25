@@ -185,52 +185,53 @@ export default defineComponent({
     },
     handleScore(index: number) {
       const currentTime = Date.now()
-      console.log('hanldescore', index)
+      const effectTime = 100
       let time2 =
         index === 1 ? this.isActive1Time : index === 2 ? this.isActive2Time : this.isActive3Time
-      console.log(time2, currentTime)
       if (currentTime - time2 < 100 && currentTime - time2 > -100) {
         // 完美
         this.score += 100
+        navigator.vibrate(100)
         if (index === 1) {
           clearTimeout(this.timer1)
           this.isActive1 = true
           this.timer1 = setTimeout(() => {
             this.isActive1 = false
-          }, 50)
+          }, effectTime)
         } else if (index === 2) {
           clearTimeout(this.timer2)
           this.isActive2 = true
           this.timer2 = setTimeout(() => {
             this.isActive2 = false
-          }, 50)
+          }, effectTime)
         } else {
           clearTimeout(this.timer3)
           this.isActive3 = true
           this.timer3 = setTimeout(() => {
             this.isActive3 = false
-          }, 50)
+          }, effectTime)
         }
       } else if (currentTime - time2 < 200 && currentTime - time2 > -200) {
         this.score += 50
+        navigator.vibrate(100)
         if (index === 1) {
           clearTimeout(this.timer1)
           this.isWell1 = true
           this.timer1 = setTimeout(() => {
             this.isWell1 = false
-          }, 50)
+          }, effectTime)
         } else if (index === 2) {
           clearTimeout(this.timer2)
           this.isWell2 = true
           this.timer2 = setTimeout(() => {
             this.isWell2 = false
-          }, 50)
+          }, effectTime)
         } else {
           clearTimeout(this.timer3)
           this.isWell3 = true
           this.timer3 = setTimeout(() => {
             this.isWell3 = false
-          }, 50)
+          }, effectTime)
         }
       } else {
         if (index === 1) {
@@ -238,19 +239,19 @@ export default defineComponent({
           this.isWrong1 = true
           this.timer1 = setTimeout(() => {
             this.isWrong1 = false
-          }, 50)
+          }, effectTime)
         } else if (index === 2) {
           clearTimeout(this.timer2)
           this.isWrong2 = true
           this.timer2 = setTimeout(() => {
             this.isWrong2 = false
-          }, 50)
+          }, effectTime)
         } else {
           clearTimeout(this.timer3)
           this.isWrong3 = true
           this.timer3 = setTimeout(() => {
             this.isWrong3 = false
-          }, 50)
+          }, effectTime)
         }
       }
     },
@@ -367,31 +368,40 @@ export default defineComponent({
 }
 .test-block-box {
   position: absolute;
-  bottom: 15px;
-  left: 105px;
+  bottom: 10px;
+  height: 283px;
+  left: 104px;
   z-index: 100;
 
   display: flex;
   // width: 400px;
   // margin-top: 100px;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
+  align-items: center;
   opacity: 0.8;
   .block {
-    width: 85px;
-    height: 86px;
-    border: 3px solid green;
+    width: 89px;
+    height: 89px;
+
+    // margin: 5px;
+    border: 2px solid #444;
     background-color: #fff;
+    transition: background-color 0.8s ease;
+
     &.active {
       background-color: yellow;
     }
     &.perfect {
+      transition: background-color 0.2s ease;
       background-color: green;
     }
     &.well {
+      transition: background-color 0.2s ease;
       background-color: yellow;
     }
     &.wrong {
+      transition: background-color 0.2s ease;
       background-color: red;
     }
   }

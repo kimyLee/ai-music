@@ -91,7 +91,8 @@ export default defineComponent({
       timer1: null as any,
       timer2: null as any,
       timer3: null as any,
-      score: 0
+      score: 0,
+      canPlay: false
     }
   },
   components: {
@@ -100,7 +101,15 @@ export default defineComponent({
   },
   computed: {},
   mounted() {
-    this.musicPlayer = new Audio('/ai-music/dist/flowerdance.mp3')
+    // this.musicPlayer = new Audio('/ai-music/dist/flowerdance.mp3')
+    this.musicPlayer = new Audio('/ai-music/dist/zhongguohua.mp3')
+    this.musicPlayer.addEventListener(
+      'canplaythrough',
+      () => {
+        this.canPlay = true
+      },
+      false
+    )
     this.getJson()
     // 1. ok 获取json文件对象
     // 2. ok 数据清洗，获取bpm，beat数组，其中beat数组1和2轨道合并去重
@@ -119,7 +128,8 @@ export default defineComponent({
     async getJson() {
       // let obj = {} as any
       var oReq = new XMLHttpRequest()
-      oReq.open('GET', '/ai-music/dist/1.json', true)
+      // oReq.open('GET', '/ai-music/dist/1.json', true)
+      oReq.open('GET', '/ai-music/dist/2.json', true)
 
       oReq.onload = (oEvent) => {
         const obj = JSON.parse(oReq.responseText)
@@ -170,6 +180,10 @@ export default defineComponent({
       ;(this.$refs as any).keyboard.setIndexLightToggle(indexMap[index], true)
     },
     async handleStart() {
+      if (!this.canPlay) {
+        alert('音乐正在加载，请稍等重试')
+        return
+      }
       this.musicPlayer.play()
       // setTimeout(() => {
       //   this.musicPlayer.play()
@@ -311,7 +325,8 @@ export default defineComponent({
       const expect = this.startTime + this.count * this.loopTime
       const offset = Date.now() - expect
 
-      if (currentBeat > 227) {
+      // if (currentBeat > 227) {
+      if (currentBeat > 259) {
         this.closeLoop()
       } else {
         this.timer = setTimeout(() => {

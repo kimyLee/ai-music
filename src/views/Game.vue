@@ -13,9 +13,9 @@
       </div>
       <!-- 第二排开始，3*7的键盘布局 -->
       <div class="test-block-box">
-        <div class="block" @click="handleClick(0)"></div>
-        <div class="block" @click="handleClick(1)"></div>
-        <div class="block" @click="handleClick(2)"></div>
+        <div class="block" :class="{ wrong: isWrong1 }" @click="handleClick(0)"></div>
+        <div class="block" :class="{ wrong: isWrong2 }" @click="handleClick(1)"></div>
+        <div class="block" :class="{ wrong: isWrong3 }" @click="handleClick(2)"></div>
       </div>
       <Keyboard
         ref="keyboard"
@@ -58,7 +58,10 @@ export default defineComponent({
       currentNote: 0,
       gameTimer: null as any,
       notes: [] as any[],
-      gameTime: 30
+      gameTime: 30,
+      isWrong1: false,
+      isWrong2: false,
+      isWrong3: false
     }
   },
   components: {
@@ -86,7 +89,7 @@ export default defineComponent({
       this.handleCountDown()
     },
     handleCountDown() {
-      setTimeout(() => {
+      this.gameTimer = setTimeout(() => {
         this.gameTime--
         this.changeStatus('剩余' + this.gameTime + 's')
         if (this.gameTime <= 0) {
@@ -213,8 +216,20 @@ export default defineComponent({
         this.drawLight()
         this.playMusic()
       } else {
+        clearTimeout(this.gameTimer)
+        if (index === 0) {
+          this.isWrong1 = true
+        }
+        if (index === 1) {
+          this.isWrong2 = true
+        }
+        if (index === 2) {
+          this.isWrong3 = true
+        }
         this.gameOver = true
-        this.status = 'Game Over'
+        setTimeout(() => {
+          this.status = 'Game Over'
+        }, 1000)
       }
     },
     async handleStart() {},
@@ -265,9 +280,9 @@ export default defineComponent({
 }
 .test-block-box {
   position: absolute;
-  bottom: 10px;
+  bottom: 9px;
   height: 283px;
-  left: 14px;
+  left: 10px;
   z-index: 100;
 
   display: flex;
@@ -276,15 +291,20 @@ export default defineComponent({
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  opacity: 0;
+  // opacity: 0;
   .block {
     width: 89px;
     height: 89px;
+    opacity: 0;
 
     // margin: 5px;
-    border: 2px solid #444;
-    background-color: #fff;
+    border: 2px solid transparent;
+    // background-color: #fff;
     transition: background-color 0.8s ease;
+    &.wrong {
+      opacity: 1;
+      background-color: red;
+    }
   }
 }
 

@@ -1,7 +1,8 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import Home from '@/views/Home.vue'
-import Music from '@/views/Music.vue'
+// import Music from '@/views/Music.vue'
 import Music1 from '@/views/Music1.vue'
+import Game from '@/views/Game.vue'
 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
@@ -14,12 +15,17 @@ const router = createRouter({
     {
       path: '/music',
       name: 'music',
-      component: Music
+      component: Music1
     },
     {
       path: '/music1',
       name: 'music1',
       component: Music1
+    },
+    {
+      path: '/game',
+      name: 'game',
+      component: Game
     },
     {
       path: '/test',

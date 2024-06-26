@@ -110,6 +110,7 @@ export default defineComponent({
       },
       false
     )
+    this.musicPlayer.load()
     this.getJson()
     // 1. ok 获取json文件对象
     // 2. ok 数据清洗，获取bpm，beat数组，其中beat数组1和2轨道合并去重

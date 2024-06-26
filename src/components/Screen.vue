@@ -2,7 +2,7 @@
   <div class="screen">
     <div>{{ status }}···</div>
     <div>得分：{{ text }}</div>
-    <div v-show="status != 'Normal'">第{{ current + 1 }}节 / 总4节</div>
+    <!-- <div v-show="status != 'Normal'">第{{ current + 1 }}节 / 总4节</div> -->
     <div>
       <span v-for="item in rightnumber" :key="item" class="right-box"></span>
     </div>

@@ -238,8 +238,8 @@ export default defineComponent({
 
     tapDown(noteName: string, channel = 1) {
       console.log(noteName)
-      // this.play(noteName)
-      // this.tapNote(noteName, 'down')
+      this.play(noteName)
+      this.tapNote(noteName, 'down')
 
       // 设置对应类名
       for (let i = 0; i < this.list.length; i++) {
